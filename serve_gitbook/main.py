@@ -15,8 +15,7 @@ async def get_gitbook_path(
     format: str = Query("markdown", description="The format of the content")
 ):
 
-    url = f"https://api.gitbook.com/v1/spaces/{
-        gitbook_space_id}/content/path/{top_path}?format={format}"
+    url = f"https://api.gitbook.com/v1/spaces/{gitbook_space_id}/content/path/{top_path}?format={format}"
     headers = {
         'Authorization': f'Bearer {GITBOOK_ACCESS_TOKEN}'
     }
@@ -36,8 +35,7 @@ async def get_gitbook_page(
     format: str = Query("markdown", description="The format of the content")
 ):
 
-    url = f"https://api.gitbook.com/v1/spaces/{
-        gitbook_space_id}/content/page/{page_id}?format={format}"
+    url = f"https://api.gitbook.com/v1/spaces/{gitbook_space_id}/content/page/{page_id}?format={format}"
     headers = {
         'Authorization': f'Bearer {GITBOOK_ACCESS_TOKEN}'
     }
