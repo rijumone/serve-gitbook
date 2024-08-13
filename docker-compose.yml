@@ -1,0 +1,9 @@
+services:
+  serve-gitbook:
+    build: .
+    container_name: serve-gitbook-container
+    ports:
+      - 8003:8000
+    env_file:
+      - .env
+    restart: always
