@@ -23,7 +23,7 @@ async def get_gitbook_path(
 
     if response.status_code >= 200 and response.status_code < 300:
         return response.json()
-    raise HTTPException(status_code=response.status_code, detail=response.text)
+    raise HTTPException(status_code=response.status_code, detail=response.json())
 
     
 
@@ -44,4 +44,4 @@ async def get_gitbook_page(
 
     if response.status_code >= 200 and response.status_code < 300:
         return response.json()
-    raise HTTPException(status_code=response.status_code, detail=response.text)
+    raise HTTPException(status_code=response.status_code, detail=response.json())
