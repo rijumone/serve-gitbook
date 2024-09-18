@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Query, Path
+from fastapi import FastAPI, Query, Path, HTTPException
 import requests
 import os
 
@@ -22,7 +22,7 @@ async def get_gitbook_path(
     response = requests.get(url, headers=headers)
 
     if response.status_code != 200:
-        return {"error": "Failed to fetch content", "status_code": response.status_code}
+        raise HTTPException(status_code=404, detail="Content not found")
 
     return response.json()
 
@@ -42,6 +42,6 @@ async def get_gitbook_page(
     response = requests.get(url, headers=headers)
 
     if response.status_code != 200:
-        return {"error": "Failed to fetch content", "status_code": response.status_code}
+        raise HTTPException(status_code=404, detail="Content not found")
 
     return response.json()
