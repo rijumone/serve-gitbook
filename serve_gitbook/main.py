@@ -21,10 +21,11 @@ async def get_gitbook_path(
     }
     response = requests.get(url, headers=headers)
 
-    if response.status_code != 200:
-        raise HTTPException(status_code=404, detail="Content not found")
+    if response.status_code >= 200 and response.status_code < 300:
+        return response.json()
+    raise HTTPException(status_code=response.status_code, detail=response.text)
 
-    return response.json()
+    
 
 
 @app.get("/v1/spaces/{gitbook_space_id}/content/page/{page_id}")
@@ -41,7 +42,6 @@ async def get_gitbook_page(
     }
     response = requests.get(url, headers=headers)
 
-    if response.status_code != 200:
-        raise HTTPException(status_code=404, detail="Content not found")
-
-    return response.json()
+    if response.status_code >= 200 and response.status_code < 300:
+        return response.json()
+    raise HTTPException(status_code=response.status_code, detail=response.text)
